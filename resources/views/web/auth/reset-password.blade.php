@@ -2,7 +2,7 @@
     <div style="width: 48rem; margin: 8rem auto">
 
         <!-- Validation Errors -->
-        <x-messages />
+        <x-errors />
 
         <form method="POST" action="{{ route('password.update') }}">
             @csrf

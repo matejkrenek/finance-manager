@@ -3,7 +3,7 @@
     <div style="width: 48rem; margin: 8rem auto">
 
         <!-- Validation Errors -->
-        <x-messages />
+        <x-errors />
 
         <form method="POST" action="{{ route('user.settings.basic') }}" enctype="multipart/form-data">
             @csrf
@@ -47,7 +47,7 @@
 
             <div>
                 <label for="current_password" class="block font-medium text-sm text-gray-700">Current Password</label>
-                <input type="password" name="current_password" id="current_password" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" required readonly>
+                <input type="password" name="current_password" id="current_password" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" required>
             </div>
 
             <div class="mt-4">

@@ -5,7 +5,7 @@
         </div>
 
         <!-- Validation Errors -->
-        <x-messages />
+        <x-errors />
 
         <form method="POST" action="{{ route('password.confirm') }}">
             @csrf
