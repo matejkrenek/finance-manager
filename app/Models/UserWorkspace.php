@@ -9,8 +9,19 @@ class UserWorkspace extends Model
 {
     use HasFactory;
 
+    protected $table = 'users_workspaces';
+
     protected $fillable = [
         'user_id',
         'workspace_id',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function workspace() {
+        return $this->belongsTo(Workspace::class);
+    }
+
 }

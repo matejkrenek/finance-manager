@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         VerifyEmail::toMailUsing(function ($notifiable, $url) {
-            return (new MailMessage)->view('auth.emails.verify', ['url' => $url]);
+            return (new MailMessage)->view('web.auth.emails.verify', ['url' => $url]);
         });
 
         view()->composer('components.messages', function ($view) {

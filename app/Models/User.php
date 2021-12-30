@@ -12,11 +12,8 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    protected $table = 'users';
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -46,6 +43,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'last_login_at' => 'datetime',
     ];
+
+    public function workspaces() {
+        return $this->belongsToMany(Workspace::class, 'users_workspaces');
+    }
 
     public function getFullNameAttribute() {
         return "{$this->first_name} {$this->last_name}";

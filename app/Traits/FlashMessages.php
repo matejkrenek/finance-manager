@@ -43,8 +43,8 @@ trait FlashMessages
       return self::message('warning', $message);
   }
 
-  protected static function danger($message)
+  protected static function error($message)
   {
-      return self::message('danger', $message);
+      return self::message('error', $message);
   }
 }

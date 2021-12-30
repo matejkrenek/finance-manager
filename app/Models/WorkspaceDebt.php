@@ -9,6 +9,8 @@ class WorkspaceDebt extends Model
 {
     use HasFactory;
 
+    protected $table = 'workspaces_debts';
+
     protected $fillable = [
         'purchase_id',
         'debtor_id',

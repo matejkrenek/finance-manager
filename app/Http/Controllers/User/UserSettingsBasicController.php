@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Settings;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class Basic extends Controller
+class UserSettingsBasicController extends Controller
 {
     public function index() {
         return view('web.user.settings');
@@ -26,11 +26,12 @@ class Basic extends Controller
         $user->last_name = $request->last_name;
 
         if($request->image) {
-            $user->image = $request->file('image')->store('avatars');
+            $request->file('image')->store('public/images');
+            $user->image = $request->file('image')->getClientOriginalName();
         }
 
         $user->save();
-
+        
         self::success("successfuly edited");
 
         return redirect()->route('user.settings');

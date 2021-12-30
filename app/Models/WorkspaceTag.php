@@ -9,6 +9,8 @@ class WorkspaceTag extends Model
 {
     use HasFactory;
 
+    protected $table = 'workspaces_tags';
+
     protected $fillable = [
         'workspace_id',
         'name',

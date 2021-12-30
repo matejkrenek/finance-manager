@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class UserBankAccount extends Model
 {
     use HasFactory;
+
+    protected $table = 'users_bank_accounts';
     
     protected $fillable = [
         'user_id',

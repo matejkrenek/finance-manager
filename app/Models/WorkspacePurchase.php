@@ -9,6 +9,8 @@ class WorkspacePurchase extends Model
 {
     use HasFactory;
 
+    protected $table = 'workspaces_purchases';
+
     protected $fillable = [
         'buyer_id',
         'workspace_id',
