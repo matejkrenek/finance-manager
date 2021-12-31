@@ -11,13 +11,25 @@ use Illuminate\Support\Facades\Auth;
 
 class WorkspaceMembersController extends Controller
 {
-    public function add(Workspace $workspace) {
-        $users = User::where('id', '!=', Auth::id())->get();
+    public function add(Request $request, Workspace $workspace) {
+
+        if ($request->user()->cannot('update', $workspace)) {
+            return redirect()->route('workspace.index');
+        }
+
+        $workspace_members = Workspace::find($workspace->id)->members()->get()->pluck('id')->toArray();
+
+        $users = User::whereNotIn('id', $workspace_members)->get();
 
         return view('web.workspace.members.add', ['workspace' => $workspace, 'users' => $users]);
     }
 
     public function store(Request $request, Workspace $workspace) {
+
+        if ($request->user()->cannot('update', $workspace)) {
+            return redirect()->route('workspace.index');
+        }
+
         foreach($request->members as $member) {
             UserWorkspace::create([
                 'user_id' => (int)$member,

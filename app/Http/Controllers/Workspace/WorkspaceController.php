@@ -56,12 +56,9 @@ class WorkspaceController extends Controller
 
     }
 
-    public function detail(Workspace $workspace) {
+    public function detail(Request $request, Workspace $workspace) {
 
-        if (Gate::denies('view-workspace', $workspace)) {
-
-            self::warning("You are not member of the workspace you have tried to reach");
-
+        if ($request->user()->cannot('view', $workspace)) {
             return redirect()->route('workspace.index');
         }
 
