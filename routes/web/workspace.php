@@ -16,5 +16,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/members/add', [WorkspaceMembersController::class, 'add'])->name('workspace.members.add');
         Route::post('/members/add', [WorkspaceMembersController::class, 'store']);
     });
+
+    Route::get('/workspace/invitation/{token}', [WorkspaceMembersController::class, 'invitation'])->name('workspace.invitation');
 });
 

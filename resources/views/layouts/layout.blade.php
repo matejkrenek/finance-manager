@@ -26,6 +26,12 @@
             </li>
         @else
             <li class="ml-2 mr-2">
+                <a href="{{ route('workspace.index') }}">Workspaces</a>
+            </li>
+            <li class="ml-2 mr-2">
+                <a href="{{ route('workspace.create') }}">Create workspace</a>
+            </li>
+            <li class="ml-2 mr-2">
                 <a href="{{ route('dashboard') }}">Dashboard</a>
             </li>
             <li class="ml-2 mr-2">

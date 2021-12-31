@@ -17,10 +17,19 @@ class WorkspaceInvitation extends Model
         'email',
         'token',
         'status',
+        'expires_at'
     ];
 
     protected $casts = [
         'expires_at' => 'datetime'
     ];
+
+    public function inviter() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function workspace() {
+        return $this->belongsTo(Workspace::class);
+    }
 
 }

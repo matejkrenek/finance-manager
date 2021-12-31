@@ -19,7 +19,7 @@ class CreateWorkspacesInvitationsTable extends Migration
             $table->foreignId('workspace_id')->nullable()->constrained('workspaces')->nullOnDelete();
             $table->string('email');
             $table->string('token');
-            $table->enum('status', config('states.invitation'));
+            $table->enum('status', config('states.invitation'))->default('pending');
             $table->timestamp('expires_at');
             $table->timestamps();
         });
