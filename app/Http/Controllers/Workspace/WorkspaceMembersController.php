@@ -5,11 +5,8 @@ namespace App\Http\Controllers\Workspace;
 use App\Events\UserInvitedToWorkspace;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\UserWorkspace;
 use App\Models\Workspace;
-use App\Models\WorkspaceInvitation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class WorkspaceMembersController extends Controller
 {
@@ -35,11 +32,5 @@ class WorkspaceMembersController extends Controller
         UserInvitedToWorkspace::dispatch($workspace, $request->members);
 
         return redirect()->route('workspace.detail', ['workspace' => $workspace]);
-    }
-
-    public function invitation(Request $request, $token) {
-        $invitation = WorkspaceInvitation::where('token', $token)->where('email', $request->email)->get();
-
-        return $invitation;
     }
 }
