@@ -20,5 +20,6 @@ Route::middleware('auth')->group(function() {
     Route::get('/workspace/invitation/{token}', [WorkspaceInvitationController::class, 'invitation'])->name('workspace.invitation');
     Route::post('/workspace/invitation/{token}/accept', [WorkspaceInvitationController::class, 'accept'])->name('workspace.invitation.accept');
     Route::post('/workspace/invitation/{token}/reject', [WorkspaceInvitationController::class, 'reject'])->name('workspace.invitation.reject');
+    Route::get('/{workspace:slug}/invitations', [WorkspaceInvitationController::class, 'list']);
 });
 
