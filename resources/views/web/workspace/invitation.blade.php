@@ -5,11 +5,11 @@
         <p class="mb-4">Od uživatele: <strong>{{ $invitation->inviter->email }}</strong></p>
         <x-messages />
         <div class="flex items-center justify-between">
-            <form method="POST" action="{{ route('workspace.invitation.accept', ['token' => $invitation->token]) }}">
+            <form method="POST" action="{{ route('workspace.invitation.accept', ['workspace' => $invitation->workspace, 'token' => $invitation->token]) }}">
                 @csrf
                 <button type="submit">Accept invitation</button>
             </form>
-            <form method="POST" action="{{ route('workspace.invitation.reject', ['token' => $invitation->token]) }}">
+            <form method="POST" action="{{ route('workspace.invitation.reject', ['workspace' => $invitation->workspace, 'token' => $invitation->token]) }}">
                 @csrf
                 <button type="submit">Reject</button>
             </form>

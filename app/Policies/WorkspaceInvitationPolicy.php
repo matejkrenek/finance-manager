@@ -18,6 +18,14 @@ class WorkspaceInvitationPolicy
      */
     public function view(User $user, WorkspaceInvitation $workspaceInvitation)
     {
-        return $user->email === $workspaceInvitation->email && $workspaceInvitation->expires_at < Carbon::now() && $workspaceInvitation->status === 'pending';
+        return $user->email === $workspaceInvitation->email && $workspaceInvitation->expires_at > Carbon::now() && $workspaceInvitation->status === 'pending';
+    }
+
+    public function handle(User $user, WorkspaceInvitation $workspaceInvitation)
+    {
+        return $user->email === $workspaceInvitation->email
+        && $workspaceInvitation->expires_at > Carbon::now()
+        && $workspaceInvitation->status === 'pending'
+        && !$workspaceInvitation->workspace->members()->find($user->id);
     }
 }

@@ -1,6 +1,7 @@
 <x-layout>
     <h1>Přidaní uživatelů do workspacu</h1>
     <div style="width: 48rem; margin: 8rem auto">
+        <x-errors />
         <x-messages />
         <form method="POST" action="{{ route('workspace.members.add', ['workspace' => $workspace]) }}">
             @csrf

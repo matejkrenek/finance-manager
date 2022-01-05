@@ -15,11 +15,13 @@ Route::middleware('auth')->group(function() {
         Route::get('/', [WorkspaceController::class, 'detail'])->name('workspace.detail');
         Route::get('/members/add', [WorkspaceMembersController::class, 'add'])->name('workspace.members.add');
         Route::post('/members/add', [WorkspaceMembersController::class, 'store']);
+        
+        Route::get('/invitation/{token}', [WorkspaceInvitationController::class, 'invitation'])->name('workspace.invitation');
+        Route::post('/invitation/{token}/accept', [WorkspaceInvitationController::class, 'accept'])->name('workspace.invitation.accept');
+        Route::post('/invitation/{token}/reject', [WorkspaceInvitationController::class, 'reject'])->name('workspace.invitation.reject');
+        Route::get('/invitations', [WorkspaceInvitationController::class, 'list']);
     });
 
-    Route::get('/workspace/invitation/{token}', [WorkspaceInvitationController::class, 'invitation'])->name('workspace.invitation');
-    Route::post('/workspace/invitation/{token}/accept', [WorkspaceInvitationController::class, 'accept'])->name('workspace.invitation.accept');
-    Route::post('/workspace/invitation/{token}/reject', [WorkspaceInvitationController::class, 'reject'])->name('workspace.invitation.reject');
-    Route::get('/{workspace:slug}/invitations', [WorkspaceInvitationController::class, 'list']);
+
 });
 

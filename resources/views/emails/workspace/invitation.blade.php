@@ -6,5 +6,5 @@
         <li>Expires At: <strong>{{ $invitation->expires_at }}</strong></li>
     </ul>
 
-    <a href="{{ route('workspace.invitation', ['token' => $invitation->token, 'email' => $invitation->email]) }}">Accept Invitation</a>
+    <a href="{{ route('workspace.invitation', ['workspace' => $invitation->workspace, 'token' => $invitation->token, 'email' => $invitation->email]) }}">Accept Invitation</a>
 </body>

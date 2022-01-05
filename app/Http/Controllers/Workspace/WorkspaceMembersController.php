@@ -6,6 +6,7 @@ use App\Events\UserInvitedToWorkspace;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Workspace;
+use App\Models\WorkspaceInvitation;
 use Illuminate\Http\Request;
 
 class WorkspaceMembersController extends Controller
@@ -27,6 +28,26 @@ class WorkspaceMembersController extends Controller
 
         if ($request->user()->cannot('update', $workspace)) {
             return redirect()->route('workspace.index');
+        }
+
+        $request->validate([
+            'members' => ['required', 'array'],
+            'members.*' => ['exists:users,id'],
+        ]);
+
+        foreach($request->members as $member) {
+            $invitation = WorkspaceInvitation::where('email', User::find($member)->email)->whereIn('status', ['pending', 'accepted'])->first();
+
+            if($invitation) {
+
+                if($invitation->status === 'pending') {
+                    self::info("member " . User::find($member)->full_name . ' has already been invited');
+                } else {
+                    self::info("member " . User::find($member)->full_name . ' has already been member of workspace'); 
+                }
+
+                return redirect()->back();
+            }
         }
 
         UserInvitedToWorkspace::dispatch($workspace, $request->members);
