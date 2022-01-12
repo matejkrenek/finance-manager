@@ -35,21 +35,6 @@ class WorkspaceMembersController extends Controller
             'members.*' => ['exists:users,id'],
         ]);
 
-        foreach($request->members as $member) {
-            $invitation = WorkspaceInvitation::where('email', User::find($member)->email)->whereIn('status', ['pending', 'accepted'])->first();
-
-            if($invitation) {
-
-                if($invitation->status === 'pending') {
-                    self::info("member " . User::find($member)->full_name . ' has already been invited');
-                } else {
-                    self::info("member " . User::find($member)->full_name . ' has already been member of workspace'); 
-                }
-
-                return redirect()->back();
-            }
-        }
-
         UserInvitedToWorkspace::dispatch($workspace, $request->members);
 
         return redirect()->route('workspace.detail', ['workspace' => $workspace]);

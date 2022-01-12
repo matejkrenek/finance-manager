@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Workspace;
 
+use App\Events\UserAcceptedWorkspaceInvitation;
 use App\Http\Controllers\Controller;
 use App\Models\UserWorkspace;
 use App\Models\Workspace;
@@ -40,13 +41,17 @@ class WorkspaceInvitationController extends Controller
             return redirect()->route('workspace.index');
         }
 
-        DB::transaction(function() use($invitation) {
+        DB::transaction(function() use($workspace, $invitation) {
             UserWorkspace::create([
                 'user_id' => Auth::id(),
                 'workspace_id' => $invitation->workspace_id
             ]);
+
             $invitation->status = 'accepted';
             $invitation->save();
+            
+            UserAcceptedWorkspaceInvitation::dispatch($workspace, Auth::user());
+
         });
 
         return redirect()->route('workspace.detail', ['workspace' => $workspace]);
