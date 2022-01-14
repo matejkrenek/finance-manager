@@ -1,0 +1,14 @@
+@mixin reset-btn {
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    text-decoration: none;
+    color: unset;
+    padding: 0;
+    outline: none;
+    display: inline-flex;
+    position: relative;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}

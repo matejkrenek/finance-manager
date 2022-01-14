@@ -1,0 +1,130 @@
+@for $i from 0 through 100 {
+    .w-#{$i} {
+        width: ($i + 0%) !important;
+    }
+
+    .h-#{$i} {
+        height: ($i + 0%) !important;
+    }
+}
+
+@each $gapKey, $gapValue in $gaps {
+    .m-#{$gapKey} {
+        margin: $gapValue !important;
+    }
+
+    .mx-#{$gapKey} {
+        margin-left: $gapValue !important;
+        margin-right: $gapValue !important;
+    }
+
+    .my-#{$gapKey} {
+        margin-top: $gapValue !important;
+        margin-bottom: $gapValue !important;
+    }
+
+    .mt-#{$gapKey} {
+        margin-top: $gapValue !important;
+    }
+
+    .mb-#{$gapKey} {
+        margin-bottom: $gapValue !important;
+    }
+
+    .ml-#{$gapKey} {
+        margin-left: $gapValue !important;
+    }
+
+    .mr-#{$gapKey} {
+        margin-right: $gapValue !important;
+    }    
+
+    .p-#{$gapKey} {
+        padding: $gapValue !important;
+    }
+
+    .px-#{$gapKey} {
+        padding-left: $gapValue !important;
+        padding-right: $gapValue !important;
+    }
+
+    .py-#{$gapKey} {
+        padding-top: $gapValue !important;
+        padding-bottom: $gapValue !important;
+    }
+
+    .pt-#{$gapKey} {
+        padding-top: $gapValue !important;
+    }
+
+    .pb-#{$gapKey} {
+        padding-bottom: $gapValue !important;
+    }
+
+    .pl-#{$gapKey} {
+        padding-left: $gapValue !important;
+    }
+
+    .pr-#{$gapKey} {
+        padding-right: $gapValue !important;
+    }   
+    .m-n#{$gapKey} {
+        margin: -$gapValue !important;
+    }
+
+    .mx-n#{$gapKey} {
+        margin-left: -$gapValue !important;
+        margin-right: -$gapValue !important;
+    }
+
+    .my-n#{$gapKey} {
+        margin-top: -$gapValue !important;
+        margin-bottom: -$gapValue !important;
+    }
+
+    .mt-n#{$gapKey} {
+        margin-top: -$gapValue !important;
+    }
+
+    .mb-n#{$gapKey} {
+        margin-bottom: -$gapValue !important;
+    }
+
+    .ml-n#{$gapKey} {
+        margin-left: -$gapValue !important;
+    }
+
+    .mr-n#{$gapKey} {
+        margin-right: -$gapValue !important;
+    }    
+
+    .p-n#{$gapKey} {
+        padding: -$gapValue !important;
+    }
+
+    .px-n#{$gapKey} {
+        padding-left: -$gapValue !important;
+        padding-right: -$gapValue !important;
+    }
+
+    .py-n#{$gapKey} {
+        padding-top: -$gapValue !important;
+        padding-bottom: -$gapValue !important;
+    }
+
+    .pt-n#{$gapKey} {
+        padding-top: -$gapValue !important;
+    }
+
+    .pb-n#{$gapKey} {
+        padding-bottom: -$gapValue !important;
+    }
+
+    .pl-n#{$gapKey} {
+        padding-left: -$gapValue !important;
+    }
+
+    .pr-n#{$gapKey} {
+        padding-right: -$gapValue !important;
+    }   
+}
